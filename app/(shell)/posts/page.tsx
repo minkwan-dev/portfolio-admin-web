@@ -1,3 +1,5 @@
-export { default } from "@/feature/admin-post/list-page"
+import { redirect } from "next/navigation"
 
-export const dynamic = "force-dynamic"
+export default function PostsPage() {
+    redirect("/dashboard")
+}

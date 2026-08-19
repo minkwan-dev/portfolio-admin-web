@@ -1,6 +1,6 @@
 export function AdminPostListSkeleton() {
     return (
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+        <div className="overflow-hidden bg-white">
             <div className="flex flex-col">
                 {Array.from({ length: 5 }).map((_, index) => (
                     <div

@@ -9,7 +9,7 @@ export function AdminPostTable({ posts }: AdminPostTableProps) {
     return (
         <div className="hidden md:block">
             <table className="min-w-full text-sm">
-                <thead className="border-b border-gray-200 bg-gray-50 text-left text-gray-500">
+                <thead className="border-b border-zinc-100 bg-zinc-50/80 text-left text-zinc-500">
                     <tr>
                         <th className="px-4 py-3">제목</th>
                         <th className="px-4 py-3">상태</th>

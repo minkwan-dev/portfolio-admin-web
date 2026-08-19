@@ -6,9 +6,23 @@ import type {
     SavePostInput,
 } from "@/shared/model/admin-post.types"
 
-export async function getAdminPosts(page = 1): Promise<AdminPostsResponse> {
+export type GetAdminPostsOptions = {
+    limit?: number
+    isTemp?: boolean
+    isDeleted?: boolean
+}
+
+export async function getAdminPosts(
+    page = 1,
+    options?: GetAdminPostsOptions,
+): Promise<AdminPostsResponse> {
     const response = await api.get<AdminPostsResponse>("/admin/posts", {
-        params: { page, limit: 20 },
+        params: {
+            page,
+            limit: options?.limit ?? 20,
+            ...(options?.isTemp !== undefined && { isTemp: options.isTemp }),
+            ...(options?.isDeleted !== undefined && { isDeleted: options.isDeleted }),
+        },
     })
     return response.data
 }

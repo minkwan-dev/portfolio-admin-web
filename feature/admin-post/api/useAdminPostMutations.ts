@@ -9,6 +9,15 @@ import {
 } from "@/shared/api/adminPostApi"
 import type { SavePostInput } from "@/shared/model/admin-post.types"
 import { adminPostQueryKeys } from "@/feature/admin-post/api/adminPostQueryKeys"
+import { dashboardQueryKeys } from "@/feature/dashboard/api/dashboardQueryKeys"
+
+function invalidatePostQueries(queryClient: ReturnType<typeof useQueryClient>, postId?: number) {
+    if (postId !== undefined) {
+        void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.detail(postId) })
+    }
+    void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.all })
+    void queryClient.invalidateQueries({ queryKey: dashboardQueryKeys.all })
+}
 
 type DeleteAdminPostMutationOptions = {
     redirectToList?: boolean
@@ -21,7 +30,7 @@ export function useCreateAdminPostMutation() {
     return useMutation({
         mutationFn: (input: SavePostInput) => createAdminPost(input),
         onSuccess: (post) => {
-            void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.all })
+            invalidatePostQueries(queryClient)
             router.push(`/posts/${post.id}/edit`)
         },
     })
@@ -33,8 +42,7 @@ export function useUpdateAdminPostMutation(postId: number) {
     return useMutation({
         mutationFn: (input: Partial<SavePostInput>) => updateAdminPost(postId, input),
         onSuccess: () => {
-            void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.detail(postId) })
-            void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.all })
+            invalidatePostQueries(queryClient, postId)
         },
     })
 }
@@ -49,10 +57,10 @@ export function useDeleteAdminPostMutation(
     return useMutation({
         mutationFn: () => deleteAdminPost(postId),
         onSuccess: () => {
-            void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.all })
+            invalidatePostQueries(queryClient)
 
             if (redirectToList) {
-                router.push("/posts")
+                router.push("/dashboard")
             }
         },
     })

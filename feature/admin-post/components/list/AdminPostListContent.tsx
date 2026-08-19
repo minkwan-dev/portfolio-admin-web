@@ -9,7 +9,7 @@ export function AdminPostListContent() {
     const { data, isFetching, setPage } = useAdminPostListContent()
 
     return (
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+        <div className="overflow-hidden bg-white">
             <AdminPostCardList posts={data.data} />
             <AdminPostTable posts={data.data} />
             <AdminPostListPagination
