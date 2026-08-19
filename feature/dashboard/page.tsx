@@ -4,7 +4,7 @@ import { AdminPageShell } from "@/shared/components/AdminPageShell"
 export default function DashboardPage() {
     return (
         <AdminPageShell>
-            <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8 md:py-10">
+            <main className="mx-auto w-full max-w-[1080px] px-5 py-8 sm:px-8 sm:py-10">
                 <Dashboard />
             </main>
         </AdminPageShell>

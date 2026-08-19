@@ -16,8 +16,8 @@ export function AdminPostListPagination({
     if (meta.totalPages <= 1) return null
 
     return (
-        <div className="flex flex-col gap-3 border-t border-gray-100 px-4 py-3 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-            <span>
+        <div className="flex flex-col gap-3 border-t border-border-soft bg-[#fafbfc] px-5 py-3.5 text-[13px] text-muted sm:flex-row sm:items-center sm:justify-between">
+            <span className="tabular-nums">
                 총 {meta.total}개 · {meta.page}/{meta.totalPages}페이지
             </span>
             <div className="flex items-center gap-2">
@@ -25,7 +25,7 @@ export function AdminPostListPagination({
                     type="button"
                     disabled={isLoading || meta.page <= 1}
                     onClick={() => onPageChange(meta.page - 1)}
-                    className="min-h-10 flex-1 rounded-lg border border-gray-200 px-3 py-1.5 disabled:opacity-50 sm:min-h-0 sm:flex-none"
+                    className="min-h-9 flex-1 rounded-lg bg-surface px-3.5 py-1.5 text-[13px] font-medium text-ink ring-1 ring-border transition-colors hover:bg-border-soft disabled:opacity-40 sm:min-h-0 sm:flex-none"
                 >
                     이전
                 </button>
@@ -33,7 +33,7 @@ export function AdminPostListPagination({
                     type="button"
                     disabled={isLoading || !meta.hasNextPage}
                     onClick={() => onPageChange(meta.page + 1)}
-                    className="min-h-10 flex-1 rounded-lg border border-gray-200 px-3 py-1.5 disabled:opacity-50 sm:min-h-0 sm:flex-none"
+                    className="min-h-9 flex-1 rounded-lg bg-surface px-3.5 py-1.5 text-[13px] font-medium text-ink ring-1 ring-border transition-colors hover:bg-border-soft disabled:opacity-40 sm:min-h-0 sm:flex-none"
                 >
                     다음
                 </button>

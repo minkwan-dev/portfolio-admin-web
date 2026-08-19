@@ -3,5 +3,5 @@ type AdminPageShellProps = {
 }
 
 export function AdminPageShell({ children }: AdminPageShellProps) {
-    return <div className="flex flex-1 flex-col bg-gray-50 text-black">{children}</div>
+    return <div className="flex flex-1 flex-col bg-canvas text-ink">{children}</div>
 }

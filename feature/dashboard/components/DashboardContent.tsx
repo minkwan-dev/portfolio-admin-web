@@ -8,7 +8,7 @@ export function DashboardContent() {
     const { data } = useDashboardQuery()
 
     return (
-        <div className="flex flex-col gap-8 sm:gap-10">
+        <div className="flex flex-col gap-10">
             <DashboardOverview counts={data.counts} />
             <DashboardPostsSection />
         </div>

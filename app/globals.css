@@ -1,2 +1,16 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@theme {
+    --color-canvas: #f7f8fa;
+    --color-surface: #ffffff;
+    --color-border: #e5e8eb;
+    --color-border-soft: #f2f4f6;
+    --color-ink: #191f28;
+    --color-muted: #6b7684;
+    --color-subtle: #adb5bd;
+    --color-accent: #3182f6;
+    --color-accent-soft: #e8f3ff;
+    --shadow-card: 0 2px 8px rgb(0 0 0 / 0.04);
+    --shadow-elevated: 0 8px 24px rgb(0 0 0 / 0.06);
+}
