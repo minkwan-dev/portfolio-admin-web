@@ -17,7 +17,7 @@ export function AdminPostRowActionButtons({
     return (
         <div className="flex items-center gap-2">
             <Link
-                href={`/admin/posts/${postId}/edit`}
+                href={`/posts/${postId}/edit`}
                 aria-label={`"${postTitle}" 수정`}
                 className="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-black"
             >

@@ -9,7 +9,6 @@ import {
 } from "@/shared/api/adminPostApi"
 import type { SavePostInput } from "@/shared/model/admin-post.types"
 import { adminPostQueryKeys } from "@/feature/admin-post/api/adminPostQueryKeys"
-import { postQueryKeys } from "@/shared/api/postQueryKeys"
 
 type DeleteAdminPostMutationOptions = {
     redirectToList?: boolean
@@ -23,8 +22,7 @@ export function useCreateAdminPostMutation() {
         mutationFn: (input: SavePostInput) => createAdminPost(input),
         onSuccess: (post) => {
             void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.all })
-            void queryClient.invalidateQueries({ queryKey: postQueryKeys.all })
-            router.push(`/admin/posts/${post.id}/edit`)
+            router.push(`/posts/${post.id}/edit`)
         },
     })
 }
@@ -37,7 +35,6 @@ export function useUpdateAdminPostMutation(postId: number) {
         onSuccess: () => {
             void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.detail(postId) })
             void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.all })
-            void queryClient.invalidateQueries({ queryKey: postQueryKeys.all })
         },
     })
 }
@@ -53,10 +50,9 @@ export function useDeleteAdminPostMutation(
         mutationFn: () => deleteAdminPost(postId),
         onSuccess: () => {
             void queryClient.invalidateQueries({ queryKey: adminPostQueryKeys.all })
-            void queryClient.invalidateQueries({ queryKey: postQueryKeys.all })
 
             if (redirectToList) {
-                router.push("/admin/posts")
+                router.push("/posts")
             }
         },
     })

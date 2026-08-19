@@ -9,7 +9,7 @@ export default function AdminPostListPage() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <h1 className="text-2xl font-bold">글 관리</h1>
                     <Link
-                        href="/admin/posts/new"
+                        href="/posts/new"
                         className="rounded-xl bg-black px-4 py-2.5 text-center text-sm text-white sm:py-2"
                     >
                         새 글 작성

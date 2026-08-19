@@ -23,7 +23,7 @@ export function PostEditorWriteFooter({
         >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                 <div className="flex items-center justify-between gap-4 sm:justify-start">
-                    <Link href="/admin/posts" className="text-sm text-gray-500 hover:text-black">
+                    <Link href="/posts" className="text-sm text-gray-500 hover:text-black">
                         ← 나가기
                     </Link>
                     {canDelete && (
